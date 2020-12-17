@@ -1,7 +1,10 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 from json import dumps
 
 app = Flask(__name__)
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 @app.route('/player/register', methods=['POST']) #POST, PUT, GET, DELETE
 def player_register_route():
