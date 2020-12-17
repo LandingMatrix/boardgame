@@ -11,13 +11,15 @@ class Game():
             self.players = [host]
             data.data['game_host'] = host.id
             self.round = None
+            self.is_over = None
 
     def start(self, host):
         if data.data['game_host'] != host.id:
             raise ValueError("Only host can start game")
         else:
-            #create Board
+            #set up variables
             self.round = 0
+            self.is_over = False
 
             #shuffle players
             random.shuffle(self.players)
@@ -27,7 +29,7 @@ class Game():
 
             #enter main game loop
 
-    def next_round(self, board):
+    def next_round(self):
         for player in self.players:
             player.make_move()
 
@@ -35,8 +37,10 @@ class Game():
     def abort(self, host):
         if data.data['game_host'] == host.id:
             self.players = []
+            self.is_over = True
             data.data['game_host'] = None
         elif self.players == []:
+            self.is_over = True
             data.data['game_host'] = None
         else:
             raise ValueError("You do not have permission to abort game")
@@ -52,7 +56,10 @@ if __name__ == '__main__':
     player1 = player.Player('Thomas')
     player1.join(game)
 
-    player2 = player.Player('player2')
+    player2 = player.Player('Kean')
     player2.join(game)
 
     game.start(host)
+
+    while !game.is_over:
+        round = game.next_round()
