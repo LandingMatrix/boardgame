@@ -1,0 +1,22 @@
+#name_of_square, colour, price
+go
+tile1, brown, 
+tax
+.
+.
+.
+chance
+.
+.
+jail
+.
+communtiy
+.
+.
+.
+.
+free_parking
+.
+.
+.
+.
