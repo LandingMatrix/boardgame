@@ -25,7 +25,10 @@ class Player():
             game.abort(self)
 
     def stats(self):
-        pass
+        return {
+            'name': self.name,
+            'balance': self.balance
+        }
 
     def end_turn(self, game):
         pass
@@ -35,3 +38,19 @@ class Player():
 
     def make_trade(self, game, player):
         pass
+
+def get_player(id):
+    for player in data.data['players']:
+        if player.id == id:
+            return player:
+    return None
+
+def get_player_stats(id):
+    player = get_player(id)
+    if not player:
+        raise ValueError('ID does not exist')
+
+    return {
+        'name': player.name,
+        'balance': player.balance
+    }
